@@ -10,13 +10,18 @@
 #include <thread>
 #include <iostream>
 
+/// <summary>
+/// Variable identify and start variables
+/// </summary>
 PublisherApp::PublisherApp()
     : participant(nullptr), publisher(nullptr),
       topic1(nullptr), topic2(nullptr), topic3(nullptr), topic4(nullptr), topic5(nullptr),
       writer1(nullptr), writer2(nullptr), writer3(nullptr), writer4(nullptr), writer5(nullptr)
 {
 }
-
+/// <summary>
+/// This works when task killed or goes out of scope
+/// </summary>
 PublisherApp::~PublisherApp()
 {
     if (participant)
@@ -25,7 +30,9 @@ PublisherApp::~PublisherApp()
         DomainParticipantFactory::get_instance()->delete_participant(participant);
     }
 }
-
+/// <summary>
+/// This works when app initialize
+/// </summary>
 bool PublisherApp::init()
 {
     DomainParticipantQos participantQos;
@@ -55,7 +62,7 @@ bool PublisherApp::init()
         return false;
     }
 
-    // Tek publisher oluþtur
+    //Just one publisher for all topics and writers
     publisher = participant->create_publisher(PUBLISHER_QOS_DEFAULT);
     if (!publisher)
     {

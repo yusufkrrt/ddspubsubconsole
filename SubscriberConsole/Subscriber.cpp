@@ -7,7 +7,9 @@
 #include "TopicDataType_MyType5.h"
 
 using namespace eprosima::fastdds::dds;
-
+/// <summary>
+/// Variable identify and start variables
+/// </summary>
 SubscriberApp::SubscriberApp()
     : participant1(nullptr), participant2(nullptr), participant3(nullptr), participant4(nullptr), participant5(nullptr),
     subscriber1(nullptr), subscriber2(nullptr), subscriber3(nullptr),subscriber4(nullptr), subscriber5(nullptr),
@@ -15,7 +17,9 @@ SubscriberApp::SubscriberApp()
     reader1(nullptr), reader2(nullptr), reader3(nullptr), reader4(nullptr), reader5(nullptr)
 {
 }
-
+/// <summary>
+/// This works when task killed or goes out of scope
+/// </summary>
 SubscriberApp::~SubscriberApp()
 {
     if (participant1)
@@ -23,37 +27,43 @@ SubscriberApp::~SubscriberApp()
         participant1->delete_contained_entities();
         DomainParticipantFactory::get_instance()->delete_participant(participant1);
     }
-    if (participant2)
-    {
-        participant2->delete_contained_entities();
-        DomainParticipantFactory::get_instance()->delete_participant(participant2);
-    }    
-    if (participant3)
-    {
-        participant3->delete_contained_entities();
-        DomainParticipantFactory::get_instance()->delete_participant(participant3);
-    }    
-    if (participant4)
-    {
-        participant4->delete_contained_entities();
-        DomainParticipantFactory::get_instance()->delete_participant(participant4);
-    }    
-    if (participant5)
-    {
-        participant5->delete_contained_entities();
-        DomainParticipantFactory::get_instance()->delete_participant(participant5);
-    }
+    //if (participant2)
+    //{
+    //    participant2->delete_contained_entities();
+    //    DomainParticipantFactory::get_instance()->delete_participant(participant2);
+    //}    
+    //if (participant3)
+    //{
+    //    participant3->delete_contained_entities();
+    //    DomainParticipantFactory::get_instance()->delete_participant(participant3);
+    //}    
+    //if (participant4)
+    //{
+    //    participant4->delete_contained_entities();
+    //    DomainParticipantFactory::get_instance()->delete_participant(participant4);
+    //}    
+    //if (participant5)
+    //{
+    //    participant5->delete_contained_entities();
+    //    DomainParticipantFactory::get_instance()->delete_participant(participant5);
+    //}
 }
-
+/// <summary>
+/// This works when app initialize
+/// </summary>
+/// <returns></returns>
 bool SubscriberApp::init()
 {
     // DomainParticipant oluştur
     DomainParticipantQos participantQos;
-    participantQos.transport().use_builtin_transports = true; // ✅ true olmalı
+	participantQos.transport().use_builtin_transports = true; //This must be true to use built-in transport layers
+    //We need only one subscriber and only one participant for all topics and 
     participant1 = DomainParticipantFactory::get_instance()->create_participant(0, participantQos);
     if (!participant1) { std::cerr << "Participant olusturulamadi\n"; return false; }
 
-    // Type register
+    // TypeSupport
+
+
     TypeSupport type(new TopicDataType_MyType());
     TypeSupport type1(new TopicDataType_MyType2());
     TypeSupport type2(new TopicDataType_MyType3());
@@ -66,11 +76,11 @@ bool SubscriberApp::init()
     if (type3.register_type(participant1) != RETCODE_OK) return false;
     if (type4.register_type(participant1) != RETCODE_OK) return false;
 
-    // Subscriber oluştur
+	//We need only one subscriber and only one participant for all topics and readers
     subscriber1 = participant1->create_subscriber(SUBSCRIBER_QOS_DEFAULT);
     if (!subscriber1) return false;
 
-    // Topic ve DataReader oluştur
+	// Topics and datareaders
     topic1 = participant1->create_topic("MyTopic", type.get_type_name(), TOPIC_QOS_DEFAULT);
     topic2 = participant1->create_topic("MyTopic2", type1.get_type_name(), TOPIC_QOS_DEFAULT);
     topic3 = participant1->create_topic("MyTopic3", type2.get_type_name(), TOPIC_QOS_DEFAULT);
@@ -87,12 +97,15 @@ bool SubscriberApp::init()
     return true;
 }
 
-
+/// <summary>
+/// This works when we have availabe datas
+/// </summary>
+/// <param name="reader"></param>
 void MyListener::on_data_available(DataReader* reader)
 {
-    // Hangi type olduğunu anlamak için type adı al
+    //first topic is MyType, second is MyType2, third is MyType3, fourth is MyType4, fifth is MyType5
+	// Take type names to identify which topic the data belongs to
     std::string type = reader->get_topicdescription()->get_type_name();
-
     if (type == "MyType")
     {
         MyType data;

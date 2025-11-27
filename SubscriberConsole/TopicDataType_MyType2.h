@@ -2,6 +2,7 @@
 #include <fastdds/dds/topic/TopicDataType.hpp>
 #include <fastdds/rtps/common/SerializedPayload.hpp>
 #include "MyType.h"
+//My types greeting with TopicDataType
 
 class TopicDataType_MyType2 : public eprosima::fastdds::dds::TopicDataType
 {

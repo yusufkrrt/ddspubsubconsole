@@ -8,21 +8,21 @@ int main()
 
     if (!pub.init())
         return -1;
-
+	//Not needed data instances here
     //MyType data{ 1, 3.14 };
     //MyType2 data{ 1, 4 };
     //MyType3 data{ 1, true,3.61 };
     //MyType4 data{ 1, "naber?"};
     //MyType5 data{ 1, 5,12,13 };
 
-
+	// Used to threads for each publisher infinite loop
     std::thread t1(&PublisherApp::FirstPublisherLoop, &pub);
     std::thread t2(&PublisherApp::SecondPublisherLoop, &pub);
     std::thread t3(&PublisherApp::ThirdPublisherLoop, &pub);
     std::thread t4(&PublisherApp::FourthPublisherLoop, &pub);
     std::thread t5(&PublisherApp::FifthPublisherLoop, &pub);
 
-    // Threadleri çalýþmaya býrak
+	// Let the threads run indefinitely (or until the program is terminated)
     t1.join();
     t2.join();
     t3.join();

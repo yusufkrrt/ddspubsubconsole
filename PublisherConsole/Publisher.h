@@ -26,6 +26,7 @@ public:
     void publishLoop();
 
 private:
+    //just need one participant
     DomainParticipant* participant,*participant1,*participant2, *participant3, *participant4, *participant5;
     Publisher* publisher,*publisher1, *publisher2, *publisher3, *publisher4, *publisher5;
     Topic* topic1, *topic2, *topic3, *topic4, *topic5;

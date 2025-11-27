@@ -27,6 +27,7 @@ public:
     bool init();
 
 private:
+	//Just need one participant
     DomainParticipant* participant1,*participant2, * participant3, * participant4, * participant5;
     Subscriber* subscriber1, * subscriber2, * subscriber3, * subscriber4, * subscriber5;
     Topic* topic1, * topic2, * topic3, * topic4, * topic5;

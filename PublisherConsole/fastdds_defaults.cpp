@@ -3,6 +3,7 @@
 #include <fastdds/dds/publisher/Publisher.hpp>
 #include <fastdds/dds/subscriber/Subscriber.hpp>
 
+//USED FOR JUST APP'S DEFAULT QOS VERY VERY IMPORTANT DO NOT DELETE 
 
 namespace eprosima {
 	namespace fastdds {
