@@ -1,5 +1,5 @@
 #pragma once
-
+//Type definitions for DDS topics
 struct MyType
 {
     int id;
@@ -32,3 +32,5 @@ struct MyType5
     float y;
     float z;
 };
+
+///if you want to add more types, you can do it here or another header file

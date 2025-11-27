@@ -4,7 +4,6 @@
 #include "MyType.h"
 #include <cstring>
 //My types greeting with TopicDataType
-
 class TopicDataType_MyType : public eprosima::fastdds::dds::TopicDataType
 {
 public:

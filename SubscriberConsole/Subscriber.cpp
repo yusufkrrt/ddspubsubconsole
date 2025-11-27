@@ -81,7 +81,7 @@ bool SubscriberApp::init()
     if (!subscriber1) return false;
 
 	// Topics and datareaders
-    topic1 = participant1->create_topic("MyTopic", type.get_type_name(), TOPIC_QOS_DEFAULT);
+    topic1 = participant1->create_topic("MyTopic1", type.get_type_name(), TOPIC_QOS_DEFAULT);
     topic2 = participant1->create_topic("MyTopic2", type1.get_type_name(), TOPIC_QOS_DEFAULT);
     topic3 = participant1->create_topic("MyTopic3", type2.get_type_name(), TOPIC_QOS_DEFAULT);
     topic4 = participant1->create_topic("MyTopic4", type3.get_type_name(), TOPIC_QOS_DEFAULT);

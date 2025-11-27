@@ -36,7 +36,8 @@ PublisherApp::~PublisherApp()
 bool PublisherApp::init()
 {
     DomainParticipantQos participantQos;
-    participantQos.transport().use_builtin_transports = true;
+    participantQos.transport().use_builtin_transports = true; //This must be true to use built-in transport layers
+
 
     participant = DomainParticipantFactory::get_instance()->create_participant(0, participantQos);
     if (!participant)
@@ -70,7 +71,7 @@ bool PublisherApp::init()
         return false;
     }
 
-    // Topicler
+    // Topics
     topic1 = participant->create_topic("MyTopic1", "MyType", TOPIC_QOS_DEFAULT);
     topic2 = participant->create_topic("MyTopic2", "MyType2", TOPIC_QOS_DEFAULT);
     topic3 = participant->create_topic("MyTopic3", "MyType3", TOPIC_QOS_DEFAULT);
@@ -83,7 +84,7 @@ bool PublisherApp::init()
         return false;
     }
 
-    // DataWriterlar
+    // DataWriters
     writer1 = publisher->create_datawriter(topic1, DATAWRITER_QOS_DEFAULT);
     writer2 = publisher->create_datawriter(topic2, DATAWRITER_QOS_DEFAULT);
     writer3 = publisher->create_datawriter(topic3, DATAWRITER_QOS_DEFAULT);
@@ -113,7 +114,7 @@ void PublisherApp::FirstPublisherLoop()
         data.value = counter * 3.14f;
 
         writer1->write(&data);
-        std::cout << "--id=" << data.id << " value=" << data.value << "\n";
+        std::cout << "[MyType 1] id=" << data.id << " value=" << data.value << "\n";
 
         counter++;
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -133,7 +134,7 @@ void PublisherApp::SecondPublisherLoop()
         data.temperature = counter + 1.1;
 
         writer2->write(&data);
-        std::cout << "--Sensor id=" << data.sensor_id << " Temperature=" << data.temperature << "\n";
+        std::cout << "[MyType 2] Sensor id=" << data.sensor_id << " Temperature=" << data.temperature << "\n";
 
         counter++;
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -154,7 +155,7 @@ void PublisherApp::ThirdPublisherLoop()
         data.voltage = counter * 1.5f;
 
         writer3->write(&data);
-        std::cout << "--id=" << data.device_id << " status=" << data.status << " voltage=" << data.voltage << "\n";
+        std::cout << "[MyType 3] id=" << data.device_id << " status=" << data.status << " voltage=" << data.voltage << "\n";
 
         counter++;
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -174,7 +175,7 @@ void PublisherApp::FourthPublisherLoop()
         strcpy_s(data.message, sizeof(data.message), ("Selam " + std::to_string(counter)).c_str());
 
         writer4->write(&data);
-        std::cout << "--Channel=" << data.channel << " message=" << data.message << "\n";
+        std::cout << "[MyType 4] Channel=" << data.channel << " message=" << data.message << "\n";
 
         counter++;
         std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -196,7 +197,7 @@ void PublisherApp::FifthPublisherLoop()
         data.z = counter * 3.3f;
 
         writer5->write(&data);
-        std::cout << "--index=" << data.index << " x=" << data.x << " y=" << data.y << " z=" << data.z << "\n";
+        std::cout << "[MyType 5] index=" << data.index << " x=" << data.x << " y=" << data.y << " z=" << data.z << "\n";
 
         counter++;
         std::this_thread::sleep_for(std::chrono::seconds(1));
