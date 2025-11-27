@@ -3,5 +3,5 @@
 struct MyType
 {
     int id;
-float value;
+    float value;
 };
