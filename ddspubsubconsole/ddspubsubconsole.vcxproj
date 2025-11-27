@@ -24,6 +24,7 @@
     <ProjectGuid>{f06a8cd5-fd00-4391-b65c-1313c5e24146}</ProjectGuid>
     <RootNamespace>ddspubsubconsole</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>PublisherConsole</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
