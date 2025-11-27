@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36623.8 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ddspubsubconsole", "ddspubsubconsole\ddspubsubconsole.vcxproj", "{F06A8CD5-FD00-4391-B65C-1313C5E24146}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PublisherConsole", "PublisherConsole\PublisherConsole.vcxproj", "{F06A8CD5-FD00-4391-B65C-1313C5E24146}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "subconsole", "subconsole\subconsole.vcxproj", "{248AAF75-2FA7-4F90-9354-CD9D665AA31F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SubscriberConsole", "SubscriberConsole\SubscriberConsole.vcxproj", "{248AAF75-2FA7-4F90-9354-CD9D665AA31F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
