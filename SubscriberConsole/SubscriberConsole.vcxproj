@@ -129,6 +129,10 @@
     <ClInclude Include="MyType.h" />
     <ClInclude Include="Subscriber.h" />
     <ClInclude Include="TopicDataType_MyType.h" />
+    <ClInclude Include="TopicDataType_MyType2.h" />
+    <ClInclude Include="TopicDataType_MyType3.h" />
+    <ClInclude Include="TopicDataType_MyType4.h" />
+    <ClInclude Include="TopicDataType_MyType5.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="fastdds_defaults.cpp" />

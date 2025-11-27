@@ -17,12 +17,17 @@ public:
     ~PublisherApp();
 
     bool init();
+    void FirstPublisherLoop();
+    void SecondPublisherLoop();
+    void ThirdPublisherLoop();
+    void FourthPublisherLoop();
+    void FifthPublisherLoop();
     void publish(const MyType& data);
     void publishLoop();
 
 private:
-    DomainParticipant* participant_;
-    Publisher* publisher_;
-    Topic* topic_;
-    DataWriter* writer_;
+    DomainParticipant* participant,*participant1,*participant2, *participant3, *participant4, *participant5;
+    Publisher* publisher,*publisher1, *publisher2, *publisher3, *publisher4, *publisher5;
+    Topic* topic1, *topic2, *topic3, *topic4, *topic5;
+    DataWriter* writer1, *writer2, *writer3,* writer4, *writer5 ;
 };

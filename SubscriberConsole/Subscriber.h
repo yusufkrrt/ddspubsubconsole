@@ -15,6 +15,7 @@ class MyListener : public DataReaderListener
 {
 public:
     void on_data_available(DataReader* reader) override;
+
 };
 
 class SubscriberApp
@@ -26,9 +27,9 @@ public:
     bool init();
 
 private:
-    DomainParticipant* participant_;
-    Subscriber* subscriber_;
-    Topic* topic_;
-    DataReader* reader_;
-    MyListener listener_;
+    DomainParticipant* participant1,*participant2, * participant3, * participant4, * participant5;
+    Subscriber* subscriber1, * subscriber2, * subscriber3, * subscriber4, * subscriber5;
+    Topic* topic1, * topic2, * topic3, * topic4, * topic5;
+    DataReader* reader1, * reader2, * reader3, * reader4, * reader5;
+    MyListener listener1, listener2, listener3, listener4, listener5 ;
 };
